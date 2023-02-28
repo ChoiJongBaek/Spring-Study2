@@ -14,7 +14,7 @@ public class ConfigurationSingletonTest {
     // AppConfig에서 @Configuration을 설정함으로써 싱글톤 컨테이너에 의해서 관리된다.
     // @Bean이 붙은 메서드마다 이미 스프링 빈이 존재 -> 존재하는 빈 반환
     // @Bean이 붙은 메서드마다 스프링 빈 미존재 -> 스프링 빈 등록 후 반환
-    
+     
     // AppConfig에서 @Configuration이 없이 각각 @Bean만 설정할 경우에는 스프링 빈으로 등록되지만 싱글톤이 보장되지 않는다.
     @Test
     void configurationTest() {
