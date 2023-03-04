@@ -2,9 +2,15 @@ package hello.core.discount;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+// @Qualifier("mainDiscountPolicy")를 통해 @Autowired 시 중복된 빈이 조회될 경우 구분자 부여
+//@Qualifier("mainDiscountPolicy")
+// @Primary를 통해 @Autowired 시 중복된 빈이 조회될 경우 우선순위 부여
+@Primary
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private int discountPercent = 10;
