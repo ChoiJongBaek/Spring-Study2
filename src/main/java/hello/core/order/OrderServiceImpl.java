@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -18,12 +19,14 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    // 위에 @RequiredArgsConstructor 어노테이션으로 인행 해당 생성자는 자동 생성
     // @Qualifier("mainDiscountPolicy")를 통해 해당 구분자 빈을 조회
 //    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
-
-    // 위에 @RequiredArgsConstructor 어노테이션으로 인행 해당 생성자는 자동 생성
+    // @Primary를 통해 우선순위가 정해진 빈을 조회
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    // 새로 생성한 MainDiscountPolicy 어노테이션을 이용
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
